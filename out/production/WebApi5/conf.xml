@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-config.dtd">
+<configuration>
+    <!--
+    environments:开发模式
+    work:工作模式
+    default="development"，id="development"，两个的属性值必须一致
+     -->
+    <environments default="development">
+        <environment id="development">
+            <transactionManager type="JDBC"/>
+            <dataSource type="POOLED">
+                <property name="driver" value="com.mysql.jdbc.Driver"/>
+                <property name="url" value="jdbc:mysql://localhost:3306/store"/>
+                <property name="username" value="root"/>
+                <property name="password" value="q2876278"/>
+            </dataSource>
+        </environment>
+    </environments>
+
+    <!-- 在配置文件中 关联包下的 接口类-->
+    <mappers>
+        <mapper class="com.ice.mapping.UserMapper"/>
+        <mapper class="com.ice.mapping.OrderDetailMapper"/>
+        <mapper class="com.ice.mapping.AddressMapper"/>
+        <mapper class="com.ice.mapping.AdminMapper"/>
+        <mapper class="com.ice.mapping.CartMapper"/>
+        <mapper class="com.ice.mapping.CategoryMapper"/>
+        <mapper class="com.ice.mapping.CollectionMapper"/>
+        <mapper class="com.ice.mapping.HistoryMapper"/>
+        <mapper class="com.ice.mapping.ImageMapper"/>
+        <mapper class="com.ice.mapping.LoginRecordMapper"/>
+        <mapper class="com.ice.mapping.ModifyRecordMapper"/>
+        <mapper class="com.ice.mapping.ProductMapper"/>
+        <mapper class="com.ice.mapping.OrderInfoMapper"/>
+        <mapper class="com.ice.mapping.SystemAdminMapper"/>
+        <mapper class="com.ice.mapping.QuestionMapper"/>
+        <mapper class="com.ice.mapping.BannerMapper"/>
+        <mapper class="com.ice.mapping.AnnouncementMapper"/>
+
+    </mappers>
+</configuration>

@@ -1,0 +1,71 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<!DOCTYPE struts PUBLIC
+        "-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+        "http://struts.apache.org/dtds/struts-2.3.dtd">
+
+<struts>
+    <package name="user" extends="json-default" >
+        <action name="addUser" class="com.ice.api.UserAction" method="addUser">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+        <action name="getUser" class="com.ice.api.UserAction" method="getUserById">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+        <action name="isExistUser" class="com.ice.api.UserAction" method="isExistUser">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+        <action name="updateUser" class="com.ice.api.UserAction" method="updateUser">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+        <action name="deleteUser" class="com.ice.api.UserAction" method="deleteUser">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+    </package>
+
+    <package name="anncouncement"  extends="json-default">
+        <action name="addAnnouncement" class="com.ice.api.AnnounceAction" method="addAnnouncement">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+        <action name="updateAnnouncement"  class="com.ice.api.AnnounceAction" method="updateAnnouncement">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+        <action name="deleteAnnouncement" class="com.ice.api.AnnounceAction" method="deleteAnn">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+        <action name="getAllAnnouncement" class="com.ice.api.AnnounceAction" method="getAllAnnouncement">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+
+    </package>
+
+
+
+</struts>
