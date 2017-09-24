@@ -1,19 +1,22 @@
 package com.ice.entity;
 
+import java.sql.Timestamp;
+
 public class ModifyRecord {
     int id;
     int productId;
     String reason;
     int adminId;
-    String createdAt;
+    Timestamp createdAt;
 
-    public String getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
+
     public int getId() {
         return id;
     }

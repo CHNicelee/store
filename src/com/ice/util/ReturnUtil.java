@@ -6,6 +6,8 @@ import java.util.Map;
  * Created by asd on 9/20/2017.
  */
 public class ReturnUtil {
+
+
     public static void success(Map<String,Object> map){
         map.put("success",true);
     }

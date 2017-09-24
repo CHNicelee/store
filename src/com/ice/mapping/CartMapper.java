@@ -1,10 +1,7 @@
 package com.ice.mapping;
 
 import com.ice.entity.Cart;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -13,19 +10,23 @@ import java.util.List;
  */
 public interface CartMapper {
 
-	 @Insert("INSERT INTO Cart (userId, productId,count)\n" +
-	            "        VALUES (#{userId}, #{productId}, #{count})" )
+	 @Insert("INSERT INTO Cart (userId, productId,attrId,count,createdAt)\n" +
+	            "        VALUES (#{userId}, #{productId},#{attrId},#{count},now())" )
+	 @Options(useGeneratedKeys = true,keyProperty = "id")
     void insertCart(Cart cart);
 
 	 @Delete("delete from Cart where id=#{id}")
     void deleteCart(int id);
 
-	 @Select("SELECT * FROM Cart WHERE id=#{userId}")
+	 @Select("SELECT * FROM Cart WHERE userId=#{userId}")
     List<Cart> getCartList(int userId);
 	 
-	 @Update(" UPDATE Cart SET  userId=#{userId}, productId=#{productId},count=#{count}\n" +
+	 @Update(" UPDATE Cart SET  userId=#{userId}, productId=#{productId},attrId=#{attrId},count=#{count}\n" +
 	            "        WHERE  id=#{id}")
     void updateCart(Cart cart);
+
+	@Select("select * from cart where id=#{id}")
+	Cart getCart(int id);
 
 }
 

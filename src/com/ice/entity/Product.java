@@ -1,13 +1,40 @@
 package com.ice.entity;
 
+import java.util.List;
+
 public class Product {
     int id;
     int categoryId;
     String name;
     String description;
-    int count;
-    double price;
-    String Attributes;
+    String attributes;  //例如 ["颜色","内存大小"]
+    List<ImageUrl> imageUrls;
+    List<Attribute> attr;  //这里面是attributes的值 等等
+
+    public String getAttributes() {
+        return attributes;
+    }
+
+    public void setAttributes(String attributes) {
+        this.attributes = attributes;
+    }
+
+    public List<Attribute> getAttr() {
+        return attr;
+    }
+
+    public void setAttr(List<Attribute> attr) {
+        this.attr = attr;
+    }
+
+    public List<ImageUrl> getImageUrls() {
+        return imageUrls;
+    }
+
+    public void setImageUrls(List<ImageUrl> imageUrls) {
+        this.imageUrls = imageUrls;
+    }
+
 
     public String getDescription() {
         return description;
@@ -15,30 +42,6 @@ public class Product {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    public int getCount() {
-        return count;
-    }
-
-    public void setCount(int count) {
-        this.count = count;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    public String getAttributes() {
-        return Attributes;
-    }
-
-    public void setAttributes(String attributes) {
-        Attributes = attributes;
     }
 
     public int getId() {

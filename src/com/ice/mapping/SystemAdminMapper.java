@@ -2,6 +2,7 @@ package com.ice.mapping;
 
 import com.ice.entity.SystemAdmin;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -12,6 +13,7 @@ public interface SystemAdminMapper {
 
 	@Insert("INSERT INTO SystemAdmin(username, password)\n" +
             "        VALUES (#{username}, #{password})" )
+    @Options(useGeneratedKeys = true,keyProperty = "id")
     void insertSystemAdmin(SystemAdmin admin);
 
 	@Update(" UPDATE SystemAdmin SET  password=#{password}\n" +

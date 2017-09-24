@@ -1,21 +1,13 @@
 package com.ice.test;
 
-import com.ice.entity.Question;
-import com.ice.entity.User;
-import com.ice.mapping.UserMapper;
-import com.ice.util.MybatisUtil;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
-
-import java.util.HashMap;
-import java.util.Map;
+import com.ice.api.UserAction;
 
 /**
  * Created by asd on 9/20/2017.
  */
-public class UserTest {
+public class UserTest extends UserAction{
 
-    public User getUser(){
+/*    public User getUser(){
         User user = new User();
         user.setUsername("ice");
         user.setQuestionId(1);
@@ -24,13 +16,15 @@ public class UserTest {
         user.setAvatar("ice97.jpg");
         return user;
     }
+*/
+/*
 
     public static void main(String[] args) {
         UserTest entity = new UserTest();
         SqlSessionFactory factory= MybatisUtil.getFactory();
-        SqlSession session=factory.openSession(true);
+        SqlSession sqlSession=factory.openSession(true);
         //使用反射的方法
-        UserMapper mapper=session.getMapper(UserMapper.class);
+        UserMapper mapper=sqlSession.getMapper(UserMapper.class);
 
         //删除
         mapper.deleteUserByUsername("ice");
@@ -50,7 +44,51 @@ public class UserTest {
         map.put("start",0);
         map.put("offset",1);
         System.out.println(mapper.getUserList(map));
-        session.close();
+        sqlSession.close();
+    }
+*/
+
+    public static void main(String[] args) {
+        UserTest userTest = new UserTest();
+//        userTest.addUserTest();
+//        userTest.isExistUserTest();
+//        userTest.loginTest();
+        userTest.modifyPasswordTest();
+    }
+
+    private void loginTest() {
+        username = "iceee3";
+        password = "iced";
+        login();
+        System.out.println(result);
+    }
+
+    private void addUserTest() {
+        user.setUsername("zzzzzz");
+        user.setPassword("zzzzz");
+        user.setQuestionId(1);
+        user.setAnswer("回答");
+
+        addUser();
+
+    }
+
+    public boolean isExistUserTest() {
+        username="ice";
+        isExistUser();
+        System.out.println(result);
+        return true;
+    }
+
+    public void modifyPasswordTest(){
+        username = "zzzzzz";
+        newPassword = "icddedddd";
+        answer = "回答";
+        try {
+            modifyPassword();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
     }
 
 }

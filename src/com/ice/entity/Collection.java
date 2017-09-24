@@ -1,18 +1,21 @@
 package com.ice.entity;
 
+import java.sql.Timestamp;
+
 public class Collection {
     int id;
     String userId;
     int productId;
-    String createdAt;
+    Timestamp createdAt;
 
-    public String getCreatedAt() {
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
+
     public int getId() {
         return id;
     }
@@ -36,4 +39,6 @@ public class Collection {
     public void setProductId(int productId) {
         this.productId = productId;
     }
+
+
 }

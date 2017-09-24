@@ -1,10 +1,7 @@
 package com.ice.mapping;
 
 import com.ice.entity.Category;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -13,24 +10,25 @@ import java.util.List;
  */
 public interface CategoryMapper {
 
-	@Insert("INSERT INTO Category (name, imageURL, parentId,renisPat,Attributes)\n" +
-            "        VALUES (#{name}, #{imageURL}, #{parentId},#{renisPat},#{Attributes})" )
+	@Insert("INSERT INTO Category (name, imageURL, parentId,Attributes)\n" +
+            "        VALUES (#{name}, #{imageURL}, #{parentId})" )
+    @Options(useGeneratedKeys = true,keyProperty = "id")
     void insertCategory(Category category);
 
-    /**
-     * 鑾峰緱鎬诲垎绫�  鍗硃arentId is null
-     */
-	@Select("SELECT * FROM Category ")
+
+	@Select("SELECT * FROM Category Where parentId is null or parentId=0")
     List<Category> getRootCategory();
 
-	@Select("SELECT * FROM Category WHERE id=#{parentId}")
-    List<Category> getChildrenCategory(int parentId);
+	@Select("SELECT * FROM Category WHERE parentId=#{id}")
+    List<Category> getChildrenCategory(int id);
 	
 	@Delete("delete from Category where id=#{id}")
     void deleteCategory(int id);
 
-	@Update(" UPDATE Category SET  name=#{name}, imageURL=#{imageURL},parentId=#{parentId},isParent=#{isParent}, Attributes=#{Attributes}\n" +
+	@Update(" UPDATE Category SET  name=#{name}, imageURL=#{imageURL},parentId=#{parentId}\n" +
             "        WHERE  id=#{id}")
     void updateCategory(Category category);
 
+    @Select("Select * from category where name like #{name}")
+    List<Category> searchCateogry(String name);
 }

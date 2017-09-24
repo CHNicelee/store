@@ -12,9 +12,9 @@
             <transactionManager type="JDBC"/>
             <dataSource type="POOLED">
                 <property name="driver" value="com.mysql.jdbc.Driver"/>
-                <property name="url" value="jdbc:mysql://localhost:3306/store"/>
-                <property name="username" value="root"/>
-                <property name="password" value="q2876278"/>
+                <property name="url" value="jdbc:mysql://119.29.166.254:3306/store"/>
+                <property name="username" value="other"/>
+                <property name="password" value="123456"/>
             </dataSource>
         </environment>
     </environments>
@@ -28,6 +28,7 @@
         <mapper class="com.ice.mapping.CartMapper"/>
         <mapper class="com.ice.mapping.CategoryMapper"/>
         <mapper class="com.ice.mapping.CollectionMapper"/>
+        <mapper class="com.ice.mapping.CommentMapper"/>
         <mapper class="com.ice.mapping.HistoryMapper"/>
         <mapper class="com.ice.mapping.ImageMapper"/>
         <mapper class="com.ice.mapping.LoginRecordMapper"/>
@@ -38,6 +39,6 @@
         <mapper class="com.ice.mapping.QuestionMapper"/>
         <mapper class="com.ice.mapping.BannerMapper"/>
         <mapper class="com.ice.mapping.AnnouncementMapper"/>
-
+        <mapper class="com.ice.mapping.AttributeMapper"/>
     </mappers>
 </configuration>

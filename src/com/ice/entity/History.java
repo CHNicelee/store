@@ -1,7 +1,21 @@
 package com.ice.entity;
 
+import java.sql.Timestamp;
+
 public class History {
     int id;
+
+    int userId;
+    int productId;
+    Timestamp createdAt;
+
+    public Timestamp getCreatedAt() {
+        return createdAt;
+    }
+
+    public void setCreatedAt(Timestamp createdAt) {
+        this.createdAt = createdAt;
+    }
 
     public int getUserId() {
         return userId;
@@ -11,8 +25,6 @@ public class History {
         this.userId = userId;
     }
 
-    int userId;
-    int item_id;
 
     public int getId() {
         return id;
@@ -22,11 +34,11 @@ public class History {
         this.id = id;
     }
 
-    public int getItem_id() {
-        return item_id;
+    public int getProductId() {
+        return productId;
     }
 
-    public void setItem_id(int item_id) {
-        this.item_id = item_id;
+    public void setProductId(int productId) {
+        this.productId = productId;
     }
 }

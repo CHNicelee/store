@@ -1,5 +1,8 @@
 package com.ice.entity;
 
+import java.sql.Timestamp;
+import java.util.List;
+
 public class OrderInfo {
     int id;
     int userId;
@@ -10,15 +13,36 @@ public class OrderInfo {
     String postcode;
     int express;
     int payMethod;
-    String createdAt;
+    Timestamp createdAt;
+    List<OrderDetail> details;
 
-    public String getCreatedAt() {
+    public double getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(double totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    double totalPrice;
+
+
+    public List<OrderDetail> getDetails() {
+        return details;
+    }
+
+    public void setDetails(List<OrderDetail> details) {
+        this.details = details;
+    }
+
+    public Timestamp getCreatedAt() {
         return createdAt;
     }
 
-    public void setCreatedAt(String createdAt) {
+    public void setCreatedAt(Timestamp createdAt) {
         this.createdAt = createdAt;
     }
+
     public int getId() {
         return id;
     }

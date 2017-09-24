@@ -1,10 +1,7 @@
 package com.ice.mapping;
 
 import com.ice.entity.Address;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -14,6 +11,7 @@ import java.util.List;
 public interface AddressMapper {
 	@Insert("INSERT INTO Address (userId, phone, address,name,postcode)\n" +
             "        VALUES (#{userId}, #{phone}, #{address},#{name},#{postcode})" )
+    @Options(useGeneratedKeys = true, keyProperty = "id")
     void insertAddress(Address address);
 
 	@Select("SELECT * FROM Address WHERE id=#{id}")

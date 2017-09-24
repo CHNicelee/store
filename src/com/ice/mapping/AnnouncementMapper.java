@@ -1,10 +1,7 @@
 package com.ice.mapping;
 
 import com.ice.entity.Announcement;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -13,7 +10,8 @@ import java.util.List;
  */
 public interface AnnouncementMapper {
 
-    @Insert("insert announcement (text,level,startTime,endTime) values(#{text},#{level},#{startTime},#{endTime})")
+    @Insert("insert announcement (text,level) values(#{text},#{level})")
+    @Options(useGeneratedKeys = true,keyProperty = "id")
     void insertAnnouncement(Announcement announcement);
 
     @Delete("delete from announcement where id =#{id}")
@@ -22,6 +20,6 @@ public interface AnnouncementMapper {
     @Select("select * from announcement")
     List<Announcement> getAllAnnouncement();
 
-    @Update("update announcement set text=#{text},level=#{level},startTime=#{startTime},endTime=#{endTime}")
+    @Update("update announcement set text=#{text},level=#{level}")
     void updateAnnouncement(Announcement announcement);
 }

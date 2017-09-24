@@ -2,6 +2,7 @@ package com.ice.mapping;
 
 import com.ice.entity.Question;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 import org.apache.ibatis.annotations.Update;
 
@@ -15,6 +16,7 @@ public interface QuestionMapper {
 	
 	@Insert("INSERT INTO Question(question)\n" +
             "        VALUES (#{question})" )
+    @Options(useGeneratedKeys = true,keyProperty = "id")
     void insertQuestion(Question question);
 
 	@Update(" UPDATE Question SET  question=#{question}\n" +

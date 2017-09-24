@@ -6,7 +6,6 @@ public class Category {
     String imageURL;
     int parentId;
     boolean isParent;
-    String Attributes;
 
     public boolean isParent() {
         return isParent;
@@ -16,13 +15,6 @@ public class Category {
         isParent = parent;
     }
 
-    public String getAttributes() {
-        return Attributes;
-    }
-
-    public void setAttributes(String attributes) {
-        Attributes = attributes;
-    }
 
 
 
@@ -57,4 +49,6 @@ public class Category {
     public void setImageURL(String imageURL) {
         this.imageURL = imageURL;
     }
+
+
 }

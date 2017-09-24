@@ -1,0 +1,103 @@
+package com.ice.api;
+
+import com.ice.entity.Attribute;
+import com.ice.entity.Cart;
+import com.ice.mapping.AttributeMapper;
+import com.ice.mapping.CartMapper;
+import com.ice.util.ReturnUtil;
+
+import java.util.List;
+
+public class CartAction extends BaseAction {
+
+    private CartMapper mapper= sqlSession.getMapper(CartMapper.class);
+    AttributeMapper attributeMapper = sqlSession.getMapper(AttributeMapper.class);
+
+    public Cart cart= new Cart();
+
+    public String addCart(){
+        Attribute attribute = attributeMapper.getAttribute(cart.getAttrId());
+        if(attribute.getCount()<cart.getCount()){
+            ReturnUtil.error(result,"添加失败，物品库存不够");
+            return SUCCESS;
+        }
+        try {
+            mapper.insertCart(cart);
+            result.put("data",cart);
+            ReturnUtil.success(result);
+
+            //减少库存
+            attribute.setCount(attribute.getCount() - cart.getCount());
+            attributeMapper.updateAttribute(attribute);
+        }catch (Exception e){
+            ReturnUtil.error(result,"添加失败"+e.getMessage());
+        }
+
+        return SUCCESS;
+    }
+    
+    public int id;
+    public String deleteCart(){
+    	   try {
+               //更新库存
+               Cart cart = mapper.getCart(id);
+//               Product product = productMapper.getProductById(cart.getProductId());
+               Attribute attribute = attributeMapper.getAttribute(cart.getAttrId());
+//               product.setCount(product.getCount() + cart.getCount());
+               attribute.setCount(attribute.getCount() + cart.getCount());
+//               productMapper.updateProduct(product);
+               attributeMapper.updateAttribute(attribute);
+               //删除记录
+               mapper.deleteCart(id);
+               ReturnUtil.success(result);
+           }catch (Exception e){
+               e.printStackTrace();
+               ReturnUtil.error(result,"删除失败"+e.getMessage());
+           }
+    	   close();
+           return SUCCESS;
+     }
+    
+    public int userId;
+    public String getCartList(){
+        List<Cart> list = mapper.getCartList(userId);
+        double totalPrice = 0;
+        for (Cart cart : list) {
+//            Product product = productMapper.getProductById(cart.getProductId());
+            Attribute attribute = attributeMapper.getAttribute(cart.getAttrId());
+            totalPrice+=attribute.getPrice() * cart.getCount();
+            cart.setPrice(attribute.getPrice() * cart.getCount());
+        }
+        result.put("totalPrice",totalPrice);
+        ReturnUtil.success(result);
+        result.put("data",list);
+        close();
+        return SUCCESS;
+    }
+    
+    public String updateCart(){
+        int oldCount = mapper.getCart(cart.getId()).getCount();
+        if(cart.getCount()<0){
+            ReturnUtil.error(result,"数量不能为负数");
+            return SUCCESS;
+        }
+//        Product product = productMapper.getProductById(cart.getProductId());
+        Attribute attribute = attributeMapper.getAttribute(cart.getAttrId());
+        if(cart.getCount()>oldCount){
+            if(attribute.getCount() < cart.getCount() - oldCount){
+                ReturnUtil.error(result,"商品库存不够");
+                return SUCCESS;
+            }
+        }
+        attribute.setCount(attribute.getCount()- (cart.getCount()-oldCount));
+        attributeMapper.updateAttribute(attribute);
+        cart.setPrice(cart.getCount()*attribute.getPrice());
+        mapper.updateCart(cart);
+        ReturnUtil.success(result);
+        result.put("data",cart);
+        close();
+        return SUCCESS;
+    }
+
+	
+}

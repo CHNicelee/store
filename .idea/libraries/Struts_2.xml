@@ -10,10 +10,14 @@
       <root url="jar://D:/软件/struts2/struts-2.3.28.1/lib/struts2-core-2.3.28.1.jar!/" />
       <root url="jar://D:/软件/struts2/struts-2.3.28.1/lib/struts2-json-plugin-2.3.28.1.jar!/" />
       <root url="jar://D:/软件/struts2/struts-2.3.28.1/lib/json-lib-2.3-jdk15.jar!/" />
-      <root url="jar://D:/软件/struts2/struts-2.3.28.1/lib/xwork-core-2.3.28.1.jar!/" />
       <root url="jar://D:/软件/struts2/struts-2.3.28.1/lib/freemarker-2.3.22.jar!/" />
       <root url="jar://D:/桌面/大三实训/mybatis-3.4.5/mybatis-3.4.5.jar!/" />
       <root url="jar://D:/软件/mysql/mysql-connector-java-5.1.34-bin.jar!/" />
+      <root url="jar://D:/软件/struts2/struts-2.3.28.1/lib/commons-beanutils-1.8.0.jar!/" />
+      <root url="jar://D:/软件/struts2/struts-2.3.28.1/lib/commons-collections-3.1.jar!/" />
+      <root url="jar://D:/软件/struts2/struts-2.3.28.1/lib/ezmorph-1.0.6.jar!/" />
+      <root url="jar://D:/软件/struts2/struts-2.3.28.1/lib/xwork-core-2.3.28.1.jar!/" />
+      <root url="jar://D:/软件/struts2/struts-2.3.28.1/lib/javassist-3.11.0.GA.jar!/" />
     </CLASSES>
     <JAVADOC />
     <SOURCES />

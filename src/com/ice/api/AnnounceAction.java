@@ -2,30 +2,15 @@ package com.ice.api;
 
 import com.ice.entity.Announcement;
 import com.ice.mapping.AnnouncementMapper;
-import com.ice.util.MybatisUtil;
 import com.ice.util.ReturnUtil;
-import com.opensymphony.xwork2.Action;
-import org.apache.ibatis.session.SqlSession;
-import org.apache.ibatis.session.SqlSessionFactory;
 
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 /**
  * Created by asd on 9/20/2017.
  */
-public class AnnounceAction implements Action {
-    private SqlSessionFactory factory= MybatisUtil.getFactory();
-    private SqlSession session=factory.openSession(true);
-    private AnnouncementMapper mapper=session.getMapper(AnnouncementMapper.class);
-
-    private void close(){
-        session.commit();
-        session.close();
-    }
-
-    public Map<String,Object> result = new HashMap<>();
+public class AnnounceAction extends BaseAction {
+    private AnnouncementMapper mapper= sqlSession.getMapper(AnnouncementMapper.class);
 
      /**
      * 获得所有的公告
@@ -70,7 +55,6 @@ public class AnnounceAction implements Action {
         mapper.updateAnnouncement(ann);
         ReturnUtil.success(result);
         result.put("data",ann);
-        close();
         return SUCCESS;
     }
 
@@ -83,12 +67,41 @@ public class AnnounceAction implements Action {
         mapper.insertAnnouncement(ann);
         ReturnUtil.success(result);
         result.put("data",ann);
-        close();
         return SUCCESS;
     }
 
-    @Override
-    public String execute() throws Exception {
-        return null;
+
+    //测试方法
+
+    public void addAnnouncementTest(){
+        ann.setText("这是公告");
+        ann.setLevel(3);
+        addAnnouncement();
     }
+
+    public void updateAnnTest(){
+        ann.setText("修改过了");
+        updateAnnouncement();
+    }
+
+    public void deleteAnnTest(){
+        id=2;
+        deleteAnn();
+        System.out.println(result);
+    }
+
+    public void getAllTest(){
+        getAllAnnouncement();
+        System.out.println(result);
+    }
+
+    public static void main(String[] args) {
+        //addAnnouncement测试
+        AnnounceAction action = new AnnounceAction();
+//        action.addAnnouncementTest();
+//        action.updateAnnTest();
+//        action.deleteAnnTest();
+//        action.getAllTest();
+    }
+
 }

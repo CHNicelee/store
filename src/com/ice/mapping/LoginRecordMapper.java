@@ -2,6 +2,7 @@ package com.ice.mapping;
 
 import com.ice.entity.LoginRecord;
 import org.apache.ibatis.annotations.Insert;
+import org.apache.ibatis.annotations.Options;
 import org.apache.ibatis.annotations.Select;
 
 import java.util.List;
@@ -12,7 +13,8 @@ import java.util.List;
 public interface LoginRecordMapper {
 
 	@Insert("INSERT INTO LoginRecord(ip, userId, createdAt)\n" +
-            "        VALUES (#{ip}, #{userId}, #{createdAt})" )
+            "        VALUES (#{ip}, #{userId},now())" )
+    @Options(useGeneratedKeys = true,keyProperty = "id")
     void insertLoginRecord(LoginRecord loginRecord);
 
 	@Select("SELECT * FROM LoginRecord WHERE id=#{userId}")

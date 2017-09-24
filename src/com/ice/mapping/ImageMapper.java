@@ -1,10 +1,7 @@
 package com.ice.mapping;
 
 import com.ice.entity.ImageUrl;
-import org.apache.ibatis.annotations.Delete;
-import org.apache.ibatis.annotations.Insert;
-import org.apache.ibatis.annotations.Select;
-import org.apache.ibatis.annotations.Update;
+import org.apache.ibatis.annotations.*;
 
 import java.util.List;
 
@@ -15,6 +12,7 @@ public interface ImageMapper {
 
 	@Insert("INSERT INTO Image(productId, imageUrl)\n" +
             "        VALUES (#{productId}, #{imageUrl})" )
+    @Options(useGeneratedKeys = true,keyProperty = "id")
     void insertImageUrl(ImageUrl imageUrl);
 
 	@Update(" UPDATE Image SET  productId=#{productId}, imageUrl=#{imageUrl}\n" +
@@ -24,7 +22,10 @@ public interface ImageMapper {
 	@Delete("delete from Image where id=#{id}")
     void deleteImageUrl(int id);
 
-	@Select("SELECT * FROM Image WHERE id=#{productId}")
+	@Select("SELECT * FROM Image WHERE productId=#{productId}")
     List<ImageUrl> getImageUrl(int productId);
+
+    @Select("SELECT * FROM Image WHERE fakeId=#{fakeId}")
+    List<ImageUrl> getImageUrlByFakeId(int fakeId);
 
 }

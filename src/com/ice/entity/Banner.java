@@ -8,7 +8,15 @@ public class Banner {
     int id;
     int productId;
     String title;
+    Product product;
 
+    public Product getProduct() {
+        return product;
+    }
+
+    public void setProduct(Product product) {
+        this.product = product;
+    }
 
     public int getId() {
         return id;

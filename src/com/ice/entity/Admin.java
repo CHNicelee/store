@@ -46,4 +46,15 @@ public class Admin {
     public void setName(String name) {
         this.name = name;
     }
+
+    @Override
+    public String toString() {
+        return "Admin{" +
+                "id=" + id +
+                ", username='" + username + '\'' +
+                ", password='" + password + '\'' +
+                ", auth=" + auth +
+                ", name='" + name + '\'' +
+                '}';
+    }
 }

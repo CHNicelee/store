@@ -5,14 +5,448 @@
         "http://struts.apache.org/dtds/struts-2.3.dtd">
 
 <struts>
-    <package name="user" extends="json-default" >
+
+    <package name="admin" namespace="/admin" extends="json-default">
+
+        <action name="addAdmin" class="com.ice.api.AdminAction" method="addAdmin">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="modifyPassword" class="com.ice.api.AdminAction" method="modifyPassword">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getAdmins" class="com.ice.api.AdminAction" method="getAdmins">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="login" class="com.ice.api.AdminAction" method="login">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="logout" class="com.ice.api.AdminAction" method="logout">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="updateAdmin" class="com.ice.api.AdminAction" method="updateAdmin">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="deleteAdmin" class="com.ice.api.AdminAction" method="deleteAdmin">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+    </package>
+    <package name="address" namespace="/address" extends="json-default">
+
+        <action name="addAddress" class="com.ice.api.AddressAction" method="addAddress">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="deleteAddress" class="com.ice.api.AddressAction" method="deleteAddress">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getAddressById" class="com.ice.api.AddressAction" method="getAddressById">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getAddressByUserId" class="com.ice.api.AddressAction" method="getAddressByUserId">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="updateAddress" class="com.ice.api.AddressAction" method="updateAddress">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+    </package>
+
+    <package name="announcement" namespace="/announcement" extends="json-default">
+        <action name="add" class="com.ice.api.AnnounceAction" method="addAnnouncement">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+        <action name="update"  class="com.ice.api.AnnounceAction" method="updateAnnouncement">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+        <action name="delete" class="com.ice.api.AnnounceAction" method="deleteAnn">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+        <action name="getAll" class="com.ice.api.AnnounceAction" method="getAllAnnouncement">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+
+    </package>
+
+    <package name="banner" namespace="/banner" extends="json-default">
+        <action name="addBanner" class="com.ice.api.BannerAction" method="addBanner">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="deleteBanner" class="com.ice.api.BannerAction" method="deleteBanner">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getBanners" class="com.ice.api.BannerAction" method="getBanners">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="updateBanner" class="com.ice.api.BannerAction" method="updateBanner">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+    </package>
+
+    <package name="cart" namespace="/cart" extends="json-default">
+        <action name="addCart" class="com.ice.api.CartAction" method="addCart">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="deleteCart" class="com.ice.api.CartAction" method="deleteCart">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getCartList" class="com.ice.api.CartAction" method="getCartList">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="updateCart" class="com.ice.api.CartAction" method="updateCart">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+    </package>
+
+    <package name="category" namespace="/category" extends="json-default">
+        <action name="addCategory" class="com.ice.api.CategoryAction" method="addCategory">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="deleteCategory" class="com.ice.api.CategoryAction" method="deleteCategory">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getChildrenCategory" class="com.ice.api.CategoryAction" method="getChildrenCategory">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getRootCategory" class="com.ice.api.CategoryAction" method="getRootCategory">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="updateCategory" class="com.ice.api.CategoryAction" method="updateCategory">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="searchCategory" class="com.ice.api.CategoryAction" method="searchCategory">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+    </package>
+
+    <package name="history" namespace="/history" extends="json-default">
+        <action name="addHistory" class="com.ice.api.HistoryAction" method="addHistory">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getHistorys" class="com.ice.api.HistoryAction" method="getHistoryByUserId">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="deleteHistoryById" class="com.ice.api.HistoryAction" method="deleteHistoryById">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="deleteHistoryByUserId" class="com.ice.api.HistoryAction" method="deleteHistoryByUserId">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+    </package>
+    <package name="imageUrl" namespace="/imageUrl" extends="json-default">
+        <action name="getImageUrl" class="com.ice.api.ImageUrlAction" method="getImageUrl">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="addImageUrl" class="com.ice.api.ImageUrlAction" method="addImageUrl">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+    </package>
+
+
+
+    <package name="loginRecord"  namespace="/loginRecord"  extends="json-default">
+        <action name="addLoginRecord" class="com.ice.api.LoginRecordAction" method="addLoginRecord">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getLoginRecordByUserId" class="com.ice.api.LoginRecordAction" method="getLoginRecordByUserId">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+    </package>
+
+    <package name="modifyRecord" namespace="/modifyRecord"  extends="json-default">
+        <action name="addModifyRecord" class="com.ice.api.ModifyRecordAction" method="addModifyRecord">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getModifyRecords" class="com.ice.api.ModifyRecordAction" method="getModifyRecords">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getModifyRecordByProductId" class="com.ice.api.ModifyRecordAction" method="getModifyRecordByProductId">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getModifyRecordByAdminId" class="com.ice.api.ModifyRecordAction" method="getModifyRecordByAdminId">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+    </package>
+
+    <package name="collection" namespace="/collection"  extends="json-default">
+        <action name="addCollection" class="com.ice.api.CollectionAction" method="addCollection">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getCollections" class="com.ice.api.CollectionAction" method="getCollectionByUserId">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="deleteCollectionByUserId" class="com.ice.api.CollectionAction" method="deleteCollectionByUserId">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="deleteCollection" class="com.ice.api.CollectionAction" method="deleteCollection">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+    </package>
+
+    <package name="comment" namespace="/comment"  extends="json-default">
+        <action name="addComment" class="com.ice.api.CommentAction" method="addComment">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="deleteComment" class="com.ice.api.CommentAction" method="deleteComment">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="updateComment" class="com.ice.api.CommentAction" method="updateComment">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getCommentsByFakeId" class="com.ice.api.CommentAction" method="getCommentsByFakeId">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+    </package>
+
+    <package name="order" namespace="/order"  extends="json-default">
+        <action name="addOrder" class="com.ice.api.OrderInfoAction" method="addOrder">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="updateOrder" class="com.ice.api.OrderInfoAction" method="updateOrder">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="deleteOrder" class="com.ice.api.OrderInfoAction" method="deleteOrder">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getOrderInfo" class="com.ice.api.OrderInfoAction" method="getOrderInfo">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getAllOrders" class="com.ice.api.OrderInfoAction" method="getAllOrders">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="queryOrdersByState" class="com.ice.api.OrderInfoAction" method="queryOrdersByState">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="modifyState" class="com.ice.api.OrderInfoAction" method="modifyState">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+        <action name="test" class="com.ice.api.OrderInfoAction" method="test">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+    </package>
+
+    <package name="product" namespace="/product"  extends="json-default">
+        <action name="addProduct" class="com.ice.api.ProductAction" method="addProduct">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="deleteProductById" class="com.ice.api.ProductAction" method="deleteProductById">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="updateProduct" class="com.ice.api.ProductAction" method="updateProduct">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+        <action name="getProductByCategoryId" class="com.ice.api.ProductAction" method="getProductByCategoryId">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getProductById" class="com.ice.api.ProductAction" method="getProductById">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="searchProduct" class="com.ice.api.ProductAction" method="searchProduct">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getLatestProduct" class="com.ice.api.ProductAction" method="getLatestProduct">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getMore" class="com.ice.api.ProductAction" method="getMore">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getHot" class="com.ice.api.ProductAction" method="getHot">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="addAttr" class="com.ice.api.ProductAction" method="addAttr">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+    </package>
+
+    <package name="question" namespace="/question"  extends="json-default">
+
+        <action name="addQuestion" class="com.ice.api.QuestionAction" method="addQuestion">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="updateQuestion" class="com.ice.api.QuestionAction" method="updateQuestion">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getQuestionById" class="com.ice.api.QuestionAction" method="getQuestionById">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getAllQuestions" class="com.ice.api.QuestionAction" method="getAllQuestions">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+    </package>
+
+    <package name="user" namespace="/user"  extends="json-default" >
         <action name="addUser" class="com.ice.api.UserAction" method="addUser">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getAvatarByUsername" class="com.ice.api.UserAction" method="getAvatarByUsername">
             <result type="json">
                 <param name="root">result</param>
             </result>
         </action>
 
         <action name="getUser" class="com.ice.api.UserAction" method="getUserById">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+        <action name="queryUser" class="com.ice.api.UserAction" method="queryUser">
             <result type="json">
                 <param name="root">result</param>
             </result>
@@ -36,36 +470,35 @@
             </result>
         </action>
 
+        <action name="login" class="com.ice.api.UserAction" method="login">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="isLogin" class="com.ice.api.UserAction" method="isLogin">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="logout" class="com.ice.api.UserAction" method="logout">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+        <action name="findPassword" class="com.ice.api.UserAction" method="findPassword">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="modifyPassword" class="com.ice.api.UserAction" method="modifyPassword">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+
+
     </package>
-
-    <package name="anncouncement"  extends="json-default">
-        <action name="addAnnouncement" class="com.ice.api.AnnounceAction" method="addAnnouncement">
-            <result type="json">
-                <param name="root">result</param>
-            </result>
-        </action>
-
-        <action name="updateAnnouncement"  class="com.ice.api.AnnounceAction" method="updateAnnouncement">
-            <result type="json">
-                <param name="root">result</param>
-            </result>
-        </action>
-
-        <action name="deleteAnnouncement" class="com.ice.api.AnnounceAction" method="deleteAnn">
-            <result type="json">
-                <param name="root">result</param>
-            </result>
-        </action>
-
-        <action name="getAllAnnouncement" class="com.ice.api.AnnounceAction" method="getAllAnnouncement">
-            <result type="json">
-                <param name="root">result</param>
-            </result>
-        </action>
-
-
-    </package>
-
-
 
 </struts>

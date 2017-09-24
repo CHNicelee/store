@@ -5,6 +5,24 @@ public class Cart {
     int userId;
     int productId;
     int count;
+    double price;
+    int attrId;
+
+    public int getAttrId() {
+        return attrId;
+    }
+
+    public void setAttrId(int attrId) {
+        this.attrId = attrId;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
 
     public int getId() {
         return id;

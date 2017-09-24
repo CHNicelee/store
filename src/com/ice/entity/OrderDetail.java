@@ -4,8 +4,17 @@ public class OrderDetail {
     int id;
     int orderId;
     int productId;
+    int attrId;
     int number;
     double price;
+
+    public int getAttrId() {
+        return attrId;
+    }
+
+    public void setAttrId(int attrId) {
+        this.attrId = attrId;
+    }
 
     public double getPrice() {
         return price;
