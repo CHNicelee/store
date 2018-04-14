@@ -13,8 +13,8 @@ import java.util.Map;
 public interface UserMapper {
 
 
-    @Insert("INSERT INTO User (USERNAME, PASSWORD, avatar,answer,questionId)\n" +
-            "        VALUES (#{username}, #{password}, #{avatar},#{answer},#{questionId})" )
+    @Insert("INSERT INTO User (USERNAME, PASSWORD,answer,questionId)\n" +
+            "        VALUES (#{username}, #{password},#{answer},#{questionId})" )
     @Options(useGeneratedKeys = true, keyProperty = "id")
     void insertUser(User user);
 
@@ -42,4 +42,6 @@ public interface UserMapper {
 
     @Select("select * from User where username like #{username}")
     List<User> queryUser(String username);
+
+
 }

@@ -51,7 +51,7 @@ public class HistoryAction extends BaseAction{
         return SUCCESS;
     }
     
-    int id;
+    public int id;
     public String deleteHistoryById(){
   	   try {
              mapper.deleteHistoryById(id);

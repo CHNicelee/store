@@ -1,5 +1,6 @@
 package com.ice.api;
 
+import com.ice.entity.Address;
 import com.ice.entity.Attribute;
 import com.ice.entity.OrderDetail;
 import com.ice.entity.OrderInfo;
@@ -27,7 +28,14 @@ public class OrderInfoAction extends BaseAction{
     /*
     {ids:[1,5,3,4],count:[1,2,2,2],carts:[1,2,3,4]}
      */
+    public int addressId;
     public String addOrder() throws Exception {
+        AddressMapper addressMapper = sqlSession.getMapper(AddressMapper.class);
+        Address address = addressMapper.getAddressById(addressId);
+        order.setAddress(address.getAddress());
+        order.setName(address.getName());
+        order.setPhone(address.getPhone());
+        order.setPostcode(address.getPostcode());
         try{
             orderInfoMapper.insertOrderInfo(order);
             order.setDetails(new ArrayList<>());

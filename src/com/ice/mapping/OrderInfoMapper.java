@@ -19,7 +19,7 @@ public interface OrderInfoMapper {
 	@Select("SELECT * FROM OrderInfo WHERE id=#{id}")
     OrderInfo getOrderInfo(int id);
 
-	@Select("SELECT * FROM OrderInfo WHERE userId=#{userId} and deleted <> 1")
+	@Select("SELECT * FROM OrderInfo WHERE userId=#{userId} and deleted = 0")
     List<OrderInfo> getOrderInfoByUserId(int userId);
 
 	@Update(" UPDATE OrderInfo SET  userId=#{userId}, state=#{state},phone=#{phone},address=#{address},name=#{name},postcode=#{postcode},express=#{express},payMethod=#{payMethod},createdAt=#{createdAt}\n" +

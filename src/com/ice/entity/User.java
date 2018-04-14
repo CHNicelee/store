@@ -9,6 +9,16 @@ public class User {
     int questionId;
     String answer;
 
+    int orderCount;
+
+    public int getOrderCount() {
+        return orderCount;
+    }
+
+    public void setOrderCount(int orderCount) {
+        this.orderCount = orderCount;
+    }
+
     public int getId() {
         return id;
     }

@@ -2,6 +2,7 @@ package com.ice.api;
 
 import com.ice.entity.Question;
 import com.ice.mapping.QuestionMapper;
+import com.ice.mapping.UserMapper;
 import com.ice.util.ReturnUtil;
 
 import java.util.List;
@@ -55,5 +56,8 @@ public class QuestionAction extends BaseAction{
 	        return SUCCESS;
 	    }
 
-
+		public String username;
+    	public String getQuestionByUsername() throws Exception {
+        	return "success";
+    	}
 }

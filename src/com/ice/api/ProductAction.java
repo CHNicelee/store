@@ -1,11 +1,13 @@
 package com.ice.api;
 
+import com.hankcs.hanlp.seg.common.Term;
 import com.ice.entity.Attribute;
 import com.ice.entity.OrderDetail;
 import com.ice.entity.OrderInfo;
 import com.ice.entity.Product;
 import com.ice.mapping.*;
 import com.ice.util.DataUtil;
+import com.ice.util.HanLPUtil;
 import com.ice.util.PermissionUtil;
 import com.ice.util.ReturnUtil;
 
@@ -74,11 +76,32 @@ public class ProductAction extends BaseAction  {
 
     public String name;
     public String searchProduct(){
+        //先搜索完整的名词
         List<Product> list = productMapper.searchProductByName("%"+name+"%");
-        getAttributes(list);
+        //再进行分词
+        List<Term> words = HanLPUtil.standardWord(name);
+        //将各个名词进行搜索
+        words.forEach(term -> list.addAll(productMapper.searchProductByName("%"+term.word+"%")));
+        //排除重复项
+        Map<Integer,Boolean> map = new HashMap<>();
+        List<Product> resultList = new ArrayList<>();
+        for (Product product1 : list) {
+            if(map.get(product1.getId())==null){
+                map.put(product1.getId(),true);
+                resultList.add(product1);
+            }
+        }
+        System.out.println(list);
+        System.out.println(resultList);
+        getAttributes(resultList);
 //        list= distinctList(list);
-        setImageUrls(list);
-        result.put("data",list);
+        setImageUrls(resultList);
+        result.put("data",resultList);
+        List<String> wordList = new ArrayList<>();
+        for (Term word : words) {
+            wordList.add(word.word);
+        }
+        result.put("words",wordList);
         ReturnUtil.success(result);
         return SUCCESS;
     }
@@ -153,7 +176,7 @@ public class ProductAction extends BaseAction  {
 //        Collections.sort(hotList, (o1, o2) -> o1.getCount() - o2.getCount());
         Map<Integer,Boolean> map = new HashMap<>();
         List<Product> resultList = new ArrayList<>();
-
+        System.out.println(hotList);
         hotList.stream().filter(product -> map.get(product.getId()) == null).forEach(product -> {
             map.put(product.getId(), true);
             resultList.add(product);

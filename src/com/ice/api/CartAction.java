@@ -6,7 +6,9 @@ import com.ice.mapping.AttributeMapper;
 import com.ice.mapping.CartMapper;
 import com.ice.util.ReturnUtil;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 public class CartAction extends BaseAction {
 
@@ -17,15 +19,30 @@ public class CartAction extends BaseAction {
 
     public String addCart(){
         Attribute attribute = attributeMapper.getAttribute(cart.getAttrId());
+        Map<String,Integer> map = new HashMap<>();
+        map.put("userId",cart.getUserId());
+        map.put("productId",cart.getProductId());
+        map.put("attrId",cart.getAttrId());
+        Cart c = mapper.getSameCart(map);
+        if(cart.getCount()<0){
+            ReturnUtil.error(result,"数量不能为负数");
+            return SUCCESS;
+        }
         if(attribute.getCount()<cart.getCount()){
             ReturnUtil.error(result,"添加失败，物品库存不够");
             return SUCCESS;
         }
         try {
-            mapper.insertCart(cart);
-            result.put("data",cart);
-            ReturnUtil.success(result);
+            if(c!=null){
+                c.setCount(c.getCount() + cart.getCount());
+                mapper.updateCart(c);
+                result.put("data", c);
 
+            }else {
+                mapper.insertCart(cart);
+                result.put("data", cart);
+            }
+            ReturnUtil.success(result);
             //减少库存
             attribute.setCount(attribute.getCount() - cart.getCount());
             attributeMapper.updateAttribute(attribute);
@@ -99,5 +116,17 @@ public class CartAction extends BaseAction {
         return SUCCESS;
     }
 
-	
+    public void addCartTest(){
+        cart.setCount(2);
+        cart.setProductId(8);
+        cart.setUserId(6);
+        cart.setAttrId(4);
+        addCart();
+    }
+
+    public static void main(String[] args) {
+        CartAction cartAction = new CartAction();
+        cartAction.addCartTest();
+    }
+
 }

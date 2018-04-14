@@ -6,9 +6,26 @@ package com.ice.entity;
 public class Banner {
 
     int id;
-    int productId;
     String title;
     Product product;
+    String imageUrl;
+    String productUrl;
+
+    public String getProductUrl() {
+        return productUrl;
+    }
+
+    public void setProductUrl(String productUrl) {
+        this.productUrl = productUrl;
+    }
+
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
+    public void setImageUrl(String imageUrl) {
+        this.imageUrl = imageUrl;
+    }
 
     public Product getProduct() {
         return product;
@@ -26,14 +43,6 @@ public class Banner {
         this.id = id;
     }
 
-    public int getProductId() {
-        return productId;
-    }
-
-    public void setProductId(int productId) {
-        this.productId = productId;
-    }
-
     public String getTitle() {
         return title;
     }
@@ -46,7 +55,6 @@ public class Banner {
     public String toString() {
         return "Banner{" +
                 "id=" + id +
-                ", productId=" + productId +
                 ", title='" + title + '\'' +
                 '}';
     }

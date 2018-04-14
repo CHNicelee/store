@@ -2,8 +2,6 @@ package com.ice.api;
 
 import com.ice.util.Constant;
 import com.ice.util.MybatisUtil;
-import com.ice.util.PermissionUtil;
-import com.ice.util.ReturnUtil;
 import com.opensymphony.xwork2.Action;
 import org.apache.ibatis.session.SqlSession;
 import org.apache.ibatis.session.SqlSessionFactory;
@@ -39,7 +37,8 @@ public  class BaseAction implements Action,SessionAware {
     }
 
     public boolean hasPermission(int permission){
-        Integer id = (Integer) this.session.get(Constant.USER_ID);
+        boolean flag = true;
+      /*  Integer id = (Integer) this.session.get(Constant.USER_ID);
         System.out.println("id:"+this.session.get(Constant.USER_ID));
         System.out.println("type:"+this.session.get(Constant.USER_TYPE));
 
@@ -53,8 +52,8 @@ public  class BaseAction implements Action,SessionAware {
             //没有权限
             ReturnUtil.error(result,"没有权限");
             return false;
-        }
-        return true;
+        }*/
+        return flag;
     }
 
 }

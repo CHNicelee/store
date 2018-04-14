@@ -25,7 +25,5 @@ public interface ImageMapper {
 	@Select("SELECT * FROM Image WHERE productId=#{productId}")
     List<ImageUrl> getImageUrl(int productId);
 
-    @Select("SELECT * FROM Image WHERE fakeId=#{fakeId}")
-    List<ImageUrl> getImageUrlByFakeId(int fakeId);
 
 }

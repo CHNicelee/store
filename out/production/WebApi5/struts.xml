@@ -296,7 +296,7 @@
                 <param name="root">result</param>
             </result>
         </action>
-        <action name="getCommentsByFakeId" class="com.ice.api.CommentAction" method="getCommentsByFakeId">
+        <action name="getCommentsByProductId" class="com.ice.api.CommentAction" method="getCommentsByProductId">
             <result type="json">
                 <param name="root">result</param>
             </result>
@@ -496,9 +496,38 @@
                 <param name="root">result</param>
             </result>
         </action>
+        <action name="getUserInfo" class="com.ice.api.UserAction" method="getUserInfo">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="getQuestionByUsername" class="com.ice.api.UserAction" method="getQuestionByUsername">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="answerIsRight" class="com.ice.api.UserAction" method="answerIsRight">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+        <action name="changePassword" class="com.ice.api.UserAction" method="changePassword">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
 
 
 
     </package>
+    <package name="attr" namespace="/attr"  extends="json-default" >
+        <action name="updateAttr" class="com.ice.api.AttrAction" method="updateAttr">
+            <result type="json">
+                <param name="root">result</param>
+            </result>
+        </action>
+
+    </package>
+
 
 </struts>

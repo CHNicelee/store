@@ -2,6 +2,7 @@ package com.ice.api;
 
 import com.ice.entity.Comment;
 import com.ice.mapping.CommentMapper;
+import com.ice.mapping.UserMapper;
 import com.ice.util.ReturnUtil;
 
 import java.util.List;
@@ -33,9 +34,13 @@ public class CommentAction extends BaseAction {
         return "success";
     }
 
-    public int fakeId;
-    public String getCommentsByFakeId() throws Exception {
-        List<Comment> list = mapper.getCommentByFakeId(fakeId);
+    public int productId;
+    public String getCommentsByProductId() throws Exception {
+        UserMapper userMapper = sqlSession.getMapper(UserMapper.class);
+        List<Comment> list = mapper.getCommentByProductId(productId);
+        for (Comment comment1 : list) {
+            comment1.setUser(userMapper.getUserById(comment1.getUserId()));
+        }
         result.put("data",list);
         ReturnUtil.success(result);
         return "success";

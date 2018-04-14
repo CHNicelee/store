@@ -4,8 +4,9 @@ import com.ice.entity.Collection;
 import com.ice.mapping.CollectionMapper;
 import com.ice.util.ReturnUtil;
 
+import java.util.HashMap;
 import java.util.List;
-
+import java.util.Map;
 
 
 public class CollectionAction extends BaseAction{
@@ -15,12 +16,21 @@ public class CollectionAction extends BaseAction{
     public Collection collection = new Collection();
 
     public String addCollection(){
+        Map<String,Integer> map = new HashMap<>();
+        map.put("userId",collection.getUserId());
+        map.put("productId",collection.getProductId());
+        System.out.println(map);
+        List<Collection> c = mapper.checkCollection(map);
+        if(c.size()!=0){
+            ReturnUtil.error(result,"添加失败，不能重复添加");
+            return SUCCESS;
+        }
         try {
         	 mapper.insertCollection(collection);
             result.put("data",collection);
             ReturnUtil.success(result);
         }catch (Exception e){
-            ReturnUtil.error(result,"���ʧ��"+e.getMessage());
+            ReturnUtil.error(result,"添加失败"+e.getMessage());
         }
 
         return SUCCESS;
@@ -33,7 +43,7 @@ public class CollectionAction extends BaseAction{
                ReturnUtil.success(result);
            }catch (Exception e){
                e.printStackTrace();
-               ReturnUtil.error(result,"���ʧ��"+e.getMessage());
+               ReturnUtil.error(result,"删除失败"+e.getMessage());
            }
     	   close();
            return SUCCESS;

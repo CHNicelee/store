@@ -13,7 +13,7 @@ import java.util.List;
  */
 public interface BannerMapper {
 
-    @Insert("insert banner(title,productId) values(#{title},#{productId})")
+    @Insert("insert banner(title,productUrl,imageUrl) values(#{title},#{productUrl},#{imageUrl})")
     @Options(useGeneratedKeys = true,keyProperty = "id")
     void insertBanner(Banner banner);
 

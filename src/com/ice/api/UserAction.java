@@ -1,5 +1,7 @@
 package com.ice.api;
 
+import com.ice.entity.OrderInfo;
+import com.ice.entity.Question;
 import com.ice.entity.User;
 import com.ice.mapping.OrderInfoMapper;
 import com.ice.mapping.UserMapper;
@@ -8,7 +10,9 @@ import com.ice.util.MD5Util;
 import com.ice.util.ReturnUtil;
 import org.apache.struts2.interceptor.SessionAware;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 
 /**
  * Created by asd on 9/20/2017.
@@ -34,21 +38,29 @@ public class UserAction extends BaseAction implements SessionAware{
     }
 
     /**
-     * 添加用户  直接给user赋值
+     * 注册用户  直接给user赋值
      */
     public User user = new User();
     public String addUser(){
         try {
-            user.setPassword(MD5Util.EncoderByMd5(user.getPassword()));
-            user.setAnswer(MD5Util.EncoderByMd5(user.getAnswer()));
-            mapper.insertUser(user);
-            result.put("data",user);
-            ReturnUtil.success(result);
+            if(true) {
+                user.setPassword(MD5Util.EncoderByMd5(user.getPassword()));
+                user.setAnswer(MD5Util.EncoderByMd5(user.getAnswer()));
+                mapper.insertUser(user);
+                result.put("data", user);
+                ReturnUtil.success(result);
+            }else{
+                ReturnUtil.error(result,"用户名已存在");
+            }
         }catch (Exception e){
             e.printStackTrace();
             ReturnUtil.error(result,"添加失败"+e.getMessage());
         }
         return SUCCESS;
+    }
+
+    private boolean checkUseranmeExist() {
+        return false;
     }
 
     /**
@@ -193,6 +205,53 @@ public class UserAction extends BaseAction implements SessionAware{
             ReturnUtil.success(result);
             result.put("avatar",user.getAvatar());
         }
+        return "success";
+    }
+
+    public void setInfo(List<User> userList){
+        OrderInfoMapper orderInfoMapper = sqlSession.getMapper(OrderInfoMapper.class);
+        for (User user1 : userList) {
+            List<OrderInfo> list = orderInfoMapper.getOrderInfoByUserId(user1.getId());
+            user1.setOrderCount(list.size());
+        }
+    }
+
+    public int start;
+    public String getUserInfo() throws Exception {
+        Map<String,Integer> map = new HashMap<>();
+        map.put("start",start);
+        map.put("offset",20);
+        List<User> list = mapper.getUserList(map);
+        setInfo(list);
+        result.put("data",list);
+        return "success";
+    }
+
+
+    public String getQuestionByUsername() throws Exception {
+        user =mapper.getUserByUsername(username);
+        Question question = mapper.getQuestion(user.getQuestionId());
+        result.put("data",question);
+        ReturnUtil.success(result);
+        return "success";
+    }
+
+    public String answerIsRight() throws Exception {
+        user = mapper.getUserByUsername(username);
+        if(user.getAnswer().equals(MD5Util.EncoderByMd5(answer))){
+            ReturnUtil.success(result);
+        }else {
+            ReturnUtil.error(result,"答案错误");
+        }
+        return "success";
+    }
+
+
+    public String changePassword() throws Exception {
+        user = mapper.getUserByUsername(username);
+        user.setPassword(MD5Util.EncoderByMd5(newPassword));
+        mapper.updateUser(user);
+        ReturnUtil.success(result);
         return "success";
     }
 }

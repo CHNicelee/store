@@ -18,8 +18,11 @@
       <root url="jar://D:/软件/struts2/struts-2.3.28.1/lib/ezmorph-1.0.6.jar!/" />
       <root url="jar://D:/软件/struts2/struts-2.3.28.1/lib/xwork-core-2.3.28.1.jar!/" />
       <root url="jar://D:/软件/struts2/struts-2.3.28.1/lib/javassist-3.11.0.GA.jar!/" />
+      <root url="jar://D:/桌面/下载/HanLPDemo/HanLPResource/hanlp-1.2.8.jar!/" />
     </CLASSES>
     <JAVADOC />
-    <SOURCES />
+    <SOURCES>
+      <root url="jar://D:/桌面/下载/HanLPDemo/HanLPResource/hanlp-1.2.8-sources.jar!/" />
+    </SOURCES>
   </library>
 </component>

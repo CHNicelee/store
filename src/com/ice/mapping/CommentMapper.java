@@ -17,13 +17,11 @@ public interface CommentMapper {
     @Options(useGeneratedKeys = true,keyProperty = "id")
     void insertComment(Comment comment);
 
-    @Select("select * from comment where fakeId=#{fakeId}")
-    List<Comment> getCommentByFakeId(int fakeId);
+    @Select("select * from comment where productId=#{productId}")
+    List<Comment> getCommentByProductId(int productId);
 
     @Delete("delete from comment where id = #{id}")
     void deleteComment(int id);
-
-
 
 
 }

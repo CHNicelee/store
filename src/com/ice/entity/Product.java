@@ -68,4 +68,16 @@ public class Product {
         this.name = name;
     }
 
+    @Override
+    public String toString() {
+        return "Product{" +
+                "id=" + id +
+                ", categoryId=" + categoryId +
+                ", name='" + name + '\'' +
+                ", description='" + description + '\'' +
+                ", attributes='" + attributes + '\'' +
+                ", imageUrls=" + imageUrls +
+                ", attr=" + attr +
+                '}';
+    }
 }

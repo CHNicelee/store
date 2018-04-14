@@ -20,7 +20,7 @@ public interface AddressMapper {
 	@Select("SELECT * FROM Address WHERE userId=#{userId}")
     List<Address> getAddressByUserId(int userId);
 	
-	@Delete("delete from user where id=#{id}")
+	@Delete("delete from Address where id=#{id}")
     void deleteAddress(int id);
 	
 	@Update(" UPDATE Address SET  phone=#{phone}, address=#{address},postcode=#{postcode}\n" +

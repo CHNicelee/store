@@ -44,6 +44,6 @@ public interface ProductMapper {
     @Select("select * from product order by id desc limit 0,20")
     List<Product> getLatestProduct();
 
-    @Select("select * from product where categoryId=#{categoryId} and id>#{startId} and id<#{endId}")
+    @Select("select * from product where id>#{startId} and id<#{endId}")
     List<Product> getMore(Map<String,Integer> map);
 }

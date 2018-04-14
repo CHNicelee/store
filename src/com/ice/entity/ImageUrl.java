@@ -3,7 +3,6 @@ package com.ice.entity;
 public class ImageUrl {
     int id;
     int productId;
-    int fakeId;
     String imageUrl;
 
     public int getId() {

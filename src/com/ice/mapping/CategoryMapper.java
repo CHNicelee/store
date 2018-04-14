@@ -10,7 +10,7 @@ import java.util.List;
  */
 public interface CategoryMapper {
 
-	@Insert("INSERT INTO Category (name, imageURL, parentId,Attributes)\n" +
+	@Insert("INSERT INTO Category (name, imageURL, parentId)\n" +
             "        VALUES (#{name}, #{imageURL}, #{parentId})" )
     @Options(useGeneratedKeys = true,keyProperty = "id")
     void insertCategory(Category category);

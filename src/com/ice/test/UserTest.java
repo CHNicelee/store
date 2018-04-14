@@ -2,6 +2,9 @@ package com.ice.test;
 
 import com.ice.api.UserAction;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * Created by asd on 9/20/2017.
  */
@@ -49,11 +52,30 @@ public class UserTest extends UserAction{
 */
 
     public static void main(String[] args) {
-        UserTest userTest = new UserTest();
+//        UserTest userTest = new UserTest();
 //        userTest.addUserTest();
 //        userTest.isExistUserTest();
 //        userTest.loginTest();
-        userTest.modifyPasswordTest();
+//        userTest.modifyPasswordTest();
+
+        List<String> list = new ArrayList<>();
+        list.add("1");
+        list.add("2");
+/*
+        Iterator<String> iterator = list.iterator();
+        while (iterator.hasNext()){
+            if ("1".equals(iterator.next())){
+                iterator.remove();
+            }
+        }*/
+        for (String s : list) {
+            if ("2".equals(s)){
+               list.remove(s);
+            }
+            System.out.println(s);
+        }
+
+
     }
 
     private void loginTest() {
